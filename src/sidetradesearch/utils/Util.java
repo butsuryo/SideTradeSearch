@@ -24,7 +24,6 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.RGB;
-import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -193,9 +192,15 @@ public class Util {
      * @param label  グループ上部に表示する文字列
      * @return FillLayoutをセットしたGroup
      */
-    public static Group createGroup(Composite parent, String label) {
+    public static Group createGroup(Composite parent, String label, int columnNum) {
         Group group = new Group(parent, SWT.NONE);
-        group.setLayout(new FillLayout());
+        if (columnNum == 0 ){
+            group.setLayout(new GridLayout());
+        } else {
+            GridLayout layout = new GridLayout(columnNum, false);
+            layout.horizontalSpacing = 0;
+            group.setLayout(layout);
+        }
         group.setText(label);
 
         return group;

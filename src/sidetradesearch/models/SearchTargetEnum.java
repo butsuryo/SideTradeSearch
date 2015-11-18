@@ -5,7 +5,7 @@ public enum SearchTargetEnum {
 
     PRESENT("出"),
     REQUEST("求"),
-    NONE("指定なし");
+    ONE("どちらか");
 
     public final String searchTarget;
 
