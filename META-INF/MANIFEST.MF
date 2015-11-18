@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: SideTradeSearch
+Bundle-SymbolicName: SideTradeSearch;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: sidetradesearch.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: lib/org.eclipse.ui.forms_3.6.1.v20130822-1117.jar,
+ .

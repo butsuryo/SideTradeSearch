@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="sidetradesearch.Application">
+         </run>
+      </application>
+   </extension>
+
+
+   <!-- ビュー -->
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            name="検索結果"
+            class="sidetradesearch.views.DataView"
+            id="dataview">
+      </view>
+      <view
+            name="検索"
+            class="sidetradesearch.views.SearchView"
+            id="searchview">
+      </view>
+   </extension>
+
+
+   <!-- パースペクティブ -->
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            name="Perspective"
+            class="sidetradesearch.Perspective"
+            id="SideTradeSearch.perspective">
+      </perspective>
+   </extension>
+
+
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+
+      <perspectiveExtension targetID="*">
+         <view
+               standalone="false"
+               minimized="true"
+               closeable="false"
+               relative="org.eclipse.ui.editorss"
+               relationship="bottom"
+               ratio="0"
+               id="dataview">
+         </view>
+         <view
+               standalone="false"
+               minimized="true"
+               closeable="false"
+               relative="org.eclipse.ui.editorss"
+               relationship="left"
+               ratio="0.4"
+               id="searchview">
+         </view>
+      </perspectiveExtension>
+   </extension>
+
+
+   <!-- メニュー定義 -->
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu">
+
+         <menu label="ファイル">
+            <command
+                commandId="org.eclipse.ui.file.exit"
+                label="終了">
+            </command>
+            <command
+                commandId="openview"
+                label="ビューを開く">
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+
+   <!-- ウィザード起動ハンドラ -->
+   <extension
+       point="org.eclipse.ui.handlers">
+      <handler
+          class="sidetradesearch.handlers.ViewHandler"
+          commandId="openview">
+      </handler>
+   </extension>
+
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="SideTradeSearch.application"
+            name="SideTradeSearch">
+         <property
+               name="appName"
+               value="SideTradeSearch">
+         </property>
+      </product>
+   </extension>
+
+</plugin>
